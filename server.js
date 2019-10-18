@@ -9,7 +9,7 @@ const app = next({ dir: ".", dev });
 const routes = require("./routes");
 const handler = routes.getRequestHandler(app);
 
-
+//aqui se hizo un cmmit pilas
 app.prepare().then(() => {
   const server = express();
   server.use(express.json()); //Permite recibir json en el Servidor
