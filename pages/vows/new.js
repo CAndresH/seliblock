@@ -81,6 +81,15 @@ static async getInitialProps ({ req, query }) {
 							idStudent: state.idStudent,
 							certificateHash:contractAddress
 						  }
+						const hashes={
+							txnsHash: txnHash,
+							contractAddress: contractAddress}
+
+						await axios.post(`http://localhost:4000/hashes`, hashes )
+							.then(res => {
+							console.log("certificado_hash: txnHash");
+								//console.log(contractAddress);
+								}) ;
 						
 
 				

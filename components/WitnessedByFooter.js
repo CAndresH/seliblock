@@ -15,7 +15,9 @@ const WitnessedByFooter = (props) => {
       </div>
       <div className='Witnessed-Box'>
         <div className='Witnessed-Text-2'>This Certificate resides at Ethereum address:</div>
+        <Link route={`http://localhost:3000/admin/transaction/${props.address}`} >
           <a className='Witnessed-Text-2'>{ props.address }</a>
+        </Link>
       </div>
       <div className='Witnessed-Box'>
         <img className='BlockChain-Logos' src='../static/Ethereum-Icon.png' />
