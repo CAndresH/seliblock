@@ -30,9 +30,9 @@ static async getInitialProps ({ req, query }) {
 				//arma el objeto con los datos del alumno
 				var statefinal={
 						name: state.name,  //nombres y apellidos//
-						course: state.course, 
-						tutor: state.tutor, 
-						description: state.description, 
+						course: state.course,
+						tutor: state.tutor,
+						description: state.description,
 						date: state.date,
 						loading: false,
 						errorMessage: '',
@@ -46,11 +46,11 @@ static async getInitialProps ({ req, query }) {
 					console.log('Pasa y genera el Certificado...');
 					let { name, tutor, course, description } = statefinal;
 					const date = dateToEpoch(statefinal.date);
-				
+
 					// Submitting form to the blockchain
 					 try {
 						const accounts = await web3.eth.getAccounts();
-						web3.eth.personal.unlockAccount(accounts[0], "seli", 1500).then(console.log('Account unlocked!'));
+						web3.eth.personal.unlockAccount(accounts[0], "seed", 1500).then(console.log('Account unlocked!'));
 						// (1) Create new marriage contract
 						let transaction = await MarriageRegistry.methods
 							.createMarriage(name, tutor, course, description, date)
@@ -90,9 +90,9 @@ static async getInitialProps ({ req, query }) {
 							console.log("Certificado_hash: TxnHash");
 								//console.log(contractAddress);
 								}) ;
-						
 
-				
+
+
 
 						//envia al servidor json
 						await axios.post(`http://201.159.223.92:9090/certificates`, contratos )
@@ -119,11 +119,11 @@ static async getInitialProps ({ req, query }) {
   							console.log("AXIOS ERROR: ", err);})
 
 						//const contractAddress = transaction.events.ContractCreated.returnValues.contractAddress;
-						Router.replaceRoute(`/vows/${contractAddress}`);   
-			
+						Router.replaceRoute(`/vows/${contractAddress}`);
+
 					 } catch (err) {
 					 	statefinal.errorMessage= err.message;
-					 }  
+					 }
 				} else {
 					// If input fields have input errors:
 					//this.setState({ errorMessage: fieldErrorMsg });
@@ -142,10 +142,6 @@ static async getInitialProps ({ req, query }) {
 			Issue Certificate
 		</Button>
 		)
-	} 
+	}
 }
 export default VowsNew;
-
-
-
-
