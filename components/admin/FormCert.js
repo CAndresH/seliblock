@@ -27,7 +27,7 @@ export default class FormCert extends Component {
           console.log(certificado)
 
           ///Aqui Manda a generar el certificado Probar
-          axios.post(`http://localhost:3000/datos`, certificado )
+          axios.post(`http://201.159.223.92/datos`, certificado )
                   .then(res => {
                   console.log(res.data);
                         //console.log(contractAddress);

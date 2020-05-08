@@ -24,7 +24,7 @@ export default class admin extends Component {
             console.log("Devuelve los ultimos 20 bloques.......")
             //saca el numero de bloque, el miner y las transacciones en ese bloque.
             web3.eth.getBlockNumber().then((latest) => {    
-                  for (let i = 0; i < 20; i++) {
+                  for (let i = 0; i < 10; i++) {
                         var arraya=[]
                         web3.eth.getBlock(latest - i)
                         .then((bloque)=>{
@@ -45,7 +45,7 @@ export default class admin extends Component {
 
 
       obtenerTransacciones= ()=>{
-            const URI=`http://localhost:4000/hashes`
+            const URI=`http://201.159.223.92:9090/hashes`
             console.log(URI)
             axios.get(URI)
                   .then(res => {

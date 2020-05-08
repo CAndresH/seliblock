@@ -9,7 +9,7 @@ export default class transaction extends Component {
             console.log("longitud....")
             console.log(address.length)
             if(address.length===42){
-                  const URI=`http://localhost:4000/hashes?q=${address}`
+                  const URI=`http://201.159.223.92:9090/hashes?q=${address}`
                   console.log(URI)
                   await axios.get(URI)
                         .then((res) => {

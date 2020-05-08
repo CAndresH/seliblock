@@ -22,7 +22,5 @@
 // export default web3;
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
-
-
 const web3 = new Web3('http://201.159.223.92:9091')
 export default web3;

@@ -1,6 +1,8 @@
 # Protect confidential wallet details
 ethereum/deploy.js
-
+.key
+.csr
+.crt
 # Logs
 logs
 *.log

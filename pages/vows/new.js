@@ -85,9 +85,9 @@ static async getInitialProps ({ req, query }) {
 							txnsHash: txnHash,
 							contractAddress: contractAddress}
 
-						await axios.post(`http://localhost:4000/hashes`, hashes )
+						await axios.post(`http://201.159.223.92:9090/hashes`, hashes )
 							.then(res => {
-							console.log("certificado_hash: txnHash");
+							console.log("Certificado_hash: TxnHash");
 								//console.log(contractAddress);
 								}) ;
 						
@@ -95,7 +95,7 @@ static async getInitialProps ({ req, query }) {
 				
 
 						//envia al servidor json
-						await axios.post(`http://localhost:4000/certificates`, contratos )
+						await axios.post(`http://201.159.223.92:9090/certificates`, contratos )
    						 .then(res => {
     						  console.log("Contrato direccion");
 							   //console.log(contractAddress);
@@ -103,15 +103,20 @@ static async getInitialProps ({ req, query }) {
 
 
 
-						console.log("has a serverespe")
+						console.log("has a udadmin")
 						console.log(returnhash);
 
+						let axiosConfig = {
+						headers: {'Content-Type': 'application/json;charset=UTF-8',
+      								   "Access-Control-Allow-Origin": "*",}};
+						process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 						//envia hacia hash hacia otro servidor(Mauro
-						await axios.post(`https://seli-blockchain-int-test.herokuapp.com/certificate-result`, returnhash )
+						await axios.post(`https://seli.uazuay.edu.ec/certificate-result/`, returnhash, axiosConfig )
                                                  .then(res => {
                                                   console.log("Contrato direccion a otro servidor...", res.data);
                                                            //console.log(contractAddress);
-                                                        }) ;
+                                                        }).catch((err) => {
+  							console.log("AXIOS ERROR: ", err);})
 
 						//const contractAddress = transaction.events.ContractCreated.returnValues.contractAddress;
 						Router.replaceRoute(`/vows/${contractAddress}`);   

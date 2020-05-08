@@ -1,19 +1,22 @@
 const express = require('express')
 const next = require('next')
-var fs = require("fs");
 const cors = require('cors')
+var fs = require("fs");
+//
 const dev = process.env.NODE_ENV !== 'production'
+
 const app = next({ dir: ".", dev });
 const routes = require("./routes");
 const handler = routes.getRequestHandler(app);
 
+//aqui se hizo un cmmit pilas
 app.prepare().then(() => {
-    const server = express();
-    server.use(express.json()); //Permite recibir json en el Servidor
-    server.use(express.urlencoded({ extended: true })); //permite recibir datos de formularios estended false dado son datos sencillos
-    server.use(cors())
-
-
+  const server = express();
+  server.use(express.json()); //Permite recibir json en el Servidor
+  server.use(express.urlencoded({ extended: true })); //permite recibir datos de formularios estended false dado son datos sencillos
+  server.use(cors())
+  // Set up home page as a simple render of the page.
+  // Fall-back on other next.js assets.
   server.get("*", (req, res) => {
     return handler(req, res);
   });
@@ -72,8 +75,8 @@ app.prepare().then(() => {
 
   });
 
-  server.listen(80, err => {
-    if (err) throw err
-    console.log('> Ready on https:localhost:80')
-  })
-})
+  server.listen(3000, err => {
+    if (err) throw err;
+    console.log("> Ready on http://localhost:3000");
+  });
+});
