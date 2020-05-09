@@ -50,7 +50,7 @@ static async getInitialProps ({ req, query }) {
 					// Submitting form to the blockchain
 					 try {
 						const accounts = await web3.eth.getAccounts();
-						web3.eth.personal.unlockAccount(accounts[0], "seli", 1500).then(console.log('Account unlocked!'));
+						web3.eth.personal.unlockAccount(accounts[0], "seed", 1500).then(console.log('Account unlocked!'));
 						// (1) Create new marriage contract
 						let transaction = await MarriageRegistry.methods
 							.createMarriage(name, tutor, course, description, date)
