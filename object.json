@@ -412,6 +412,7 @@
 {"idStudent":"oX6cmhFY3Mtpe4LJG","name":"asdf","tutor":"mamelia","date":"19-12-2019","course":"Test","description":"The usability test is a good tool to understand the users.","duration":"5"}
 {"idStudent":"oX6cmhFY3Mtpe4LJG","name":"asdf","tutor":"mamelia","date":"20-12-2019","course":"Test","description":"The usability test is a good tool to understand the users.","duration":"5"}
 {"idStudent":"oX6cmhFY3Mtpe4LJG","name":"asdf","tutor":"andres","date":"7-1-2020","course":"prubas","description":"sadasdas","duration":"23"}
+<<<<<<< HEAD
 {"idStudent":"oX6cmhFY3Mtpe4LJG","name":"asdf","tutor":"andres","date":"8-5-2020","course":"CURSOPRATESTEARCERTIFCADOS","description":"CERTIFICADOS","duration":"12"}
 {"name":"julio","tutor":"andres","date":"11-12-2019","course":"asdsad","description":"asdf","duration":"3","idStudent":"oX6cmhFY3Mtpe4LJG"}
 {"idStudent":"1","date":"20-02-2021","course":"CURSO DE BLOCKCHAIN","description":"ES UN CURSO DIRIGIDO A: ","tutor":"CAHA","name":"andres"}
@@ -423,3 +424,8 @@
 {"idStudent":"nEdmofjgLofJ6GqyB","name":"Andres","tutor":"andres","date":"8-5-2020","course":"Certificados","description":"tstfinal","duration":"12"}
 {"idStudent":"g9dRFDpay5oPu8GQL","name":"Carlso Andres","tutor":"ANDRES","date":"9-5-2020","course":"certificados","description":"certificados","duration":"12"}
 {"idStudent":"nEdmofjgLofJ6GqyB","name":"Andres","tutor":"andres","date":"9-5-2020","course":"certificados","description":"certificados","duration":"34"}
+=======
+{"idStudent":"g9dRFDpay5oPu8GQL","name":"Carlso Andres","tutor":"ANDRES","date":"9-5-2020","course":"certificados","description":"certificados","duration":"12"}
+{"idStudent":"g9dRFDpay5oPu8GQL","name":"Carlso Andres","tutor":"ANDRES","date":"9-5-2020","course":"certificados","description":"certificados","duration":"12"}
+{"idStudent":"g9dRFDpay5oPu8GQL","name":"Carlso Andres","tutor":"ANDRES","date":"9-5-2020","course":"certificados","description":"certificados","duration":"12"}
+>>>>>>> 1a7924701207ffc9bebafc1c92eb8e13a3e520b1
