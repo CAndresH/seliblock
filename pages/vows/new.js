@@ -50,7 +50,7 @@ static async getInitialProps ({ req, query }) {
 					// Submitting form to the blockchain
 					 try {
 						const accounts = await web3.eth.getAccounts();
-						web3.eth.personal.unlockAccount(accounts[0], "seed", 1500).then(console.log('Account unlocked!'));
+						web3.eth.personal.unlockAccount(accounts[0], "seli", 1500).then(console.log('Account unlocked!'));
 						// (1) Create new marriage contract
 						let transaction = await MarriageRegistry.methods
 							.createMarriage(name, tutor, course, description, date)
@@ -88,8 +88,8 @@ static async getInitialProps ({ req, query }) {
 						await axios.post(`http://201.159.223.92:9090/hashes`, hashes )
 							.then(res => {
 							console.log("Certificado_hash: TxnHash");
-								//console.log(contractAddress);
-								}) ;
+								}).catch((err) => {
+    							console.log("ERROR AL ENVIAR EL JSON  EN HASHES", err);})
 
 
 
@@ -98,8 +98,8 @@ static async getInitialProps ({ req, query }) {
 						await axios.post(`http://201.159.223.92:9090/certificates`, contratos )
    						 .then(res => {
     						  console.log("Contrato direccion");
-							   //console.log(contractAddress);
-							}) ;
+							}).catch((err) => {
+  							console.log("ERROR AL ENVIAR EL JSON  EN CERTIFICATES", err);})
 
 
 
@@ -107,18 +107,14 @@ static async getInitialProps ({ req, query }) {
 						console.log(returnhash);
 
 						let axiosConfig = {
-						headers: {'Content-Type': 'application/json;charset=UTF-8',
-      								   "Access-Control-Allow-Origin": "*",}};
+						headers: {'Content-Type': 'application/json;charset=UTF-8',"Access-Control-Allow-Origin": "*",}};
 						process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 						//envia hacia hash hacia otro servidor(Mauro
 						await axios.post(`https://seli.uazuay.edu.ec/certificate-result/`, returnhash, axiosConfig )
-                                                 .then(res => {
-                                                  console.log("Contrato direccion a otro servidor...", res.data);
-                                                           //console.log(contractAddress);
-                                                        }).catch((err) => {
+              .then(res => {
+                console.log("Contrato direccion a otro servidor...", res.data);
+              }).catch((err) => {
   							console.log("AXIOS ERROR: ", err);})
-
-						//const contractAddress = transaction.events.ContractCreated.returnValues.contractAddress;
 						Router.replaceRoute(`/vows/${contractAddress}`);
 
 					 } catch (err) {
