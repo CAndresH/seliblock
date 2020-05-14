@@ -8,7 +8,7 @@ module.exports = {
   keyAccount:'seli',
   addressJsonServerHash:'http://201.159.223.92:9090/hashes',
   addressJsonServerCert:'http://201.159.223.92:9090/certificates',
-  addresSeliPlatform:'http://localhost:3000/certificate-result/',
+  addresSeliPlatform:'https://seli.uazuay.edu.ec//certificate-result/',
   blockcahinAddress:'http://201.159.223.92:9091',
   blockcahinServer:'http://201.159.223.92'
 
