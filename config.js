@@ -5,7 +5,7 @@ module.exports = {
   db: process.env.MONGODB_URI || 'mongodb://localhost:27017/blockchain',
   SECRET_TOKEN: 'Seliblockchain2019Seguridad',
   addressAllow:['::1', '::ffff:201.159.223.92'],
-  keyAccount:'seed',
+  keyAccount:'seli',
   addressJsonServerHash:'http://201.159.223.92:9090/hashes',
   addressJsonServerCert:'http://201.159.223.92:9090/certificates',
   addresSeliPlatform:'http://localhost:3000/certificate-result/',
