@@ -26,9 +26,8 @@ app.prepare().then(() => {
   server.get("*", (req, res) => {
     return handler(req, res);
   });
-  //ipfilter(ips, {mode: 'allow'})
 
-  server.post('/login/user',  userCtrl.signUp)
+  server.post('/login/user', userCtrl.signUp)
   server.post('/datos', auth, (req, res)=>{
       console.log(req.body);
       const itemData = req.body;

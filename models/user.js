@@ -21,7 +21,7 @@ const UserSchema = new Schema({
 
 UserSchema.pre('save', function (next) {
   let user = this
-  console.log("el user***", user, this)
+  //console.log("el user***", user, this)
   //if (!user.isModified('password')) return next()
 
   bcrypt.genSalt(10, (err, salt) => {
