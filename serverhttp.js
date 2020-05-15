@@ -90,7 +90,7 @@ app.prepare().then(() => {
       return console.log(`Error al conectar a la base de datos: ${err}`)
     }
     console.log('Conexión a la base de datos establecida...')
-    server.listen(config.port, () => {
+    server.listen(config.porthttp, () => {
       console.log(`API REST corriendo en http://localhost:${config.porthttp}`)
     })
   })
