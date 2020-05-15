@@ -12,12 +12,12 @@ const config = require('./config')
 const auth = require('./middlewares/auth')
 //rutas 
 const userCtrl = require('./controllers/user')
-const ipfilter = require('express-ipfilter').IpFilter
+//const ipfilter = require('express-ipfilter').IpFilter
 //aqui se hizo un cmmit pilas
 
 
 app.prepare().then(() => {
-  var ips = config.addressAllow; //localhost ::ffff:192.168.18.4 for otehr addresses
+  //var ips = config.addressAllow; //localhost ::ffff:192.168.18.4 for otehr addresses
   const server = express();
   server.use(express.json()); //Permite recibir json en el Servidor
   server.use(express.urlencoded({ extended: false })); //permite recibir datos de formularios estended false dado son datos sencillos
@@ -26,8 +26,9 @@ app.prepare().then(() => {
   server.get("*", (req, res) => {
     return handler(req, res);
   });
+  //ipfilter(ips, {mode: 'allow'})
 
-  server.post('/login/user', ipfilter(ips, {mode: 'allow'}), userCtrl.signUp)
+  server.post('/login/user',  userCtrl.signUp)
   server.post('/datos', auth, (req, res)=>{
       console.log(req.body);
       const itemData = req.body;
