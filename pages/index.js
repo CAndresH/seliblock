@@ -40,7 +40,7 @@ class MarriageIndex extends Component {
     )
  
   //console.log('de llegada en verificar');
- // const estado={item:query.itemData };
+  const estado={item:query.itemData };
   //console.log("Variables de estado de verificar.....");
   const state=estado.item;
 //Form Validation: check date validity
