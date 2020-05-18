@@ -22,7 +22,6 @@ app.prepare().then(() => {
   server.use(express.json()); //Permite recibir json en el Servidor
   server.use(express.urlencoded({ extended: false })); //permite recibir datos de formularios estended false dado son datos sencillos
   server.use(cors())
-
   server.get("*", (req, res) => {
     return handler(req, res);
   });
@@ -87,7 +86,7 @@ app.prepare().then(() => {
         key: fs.readFileSync('private.key'),
         cert: fs.readFileSync('certificate.crt')
     }, server).listen(config.porthttps, function(){
-        console.log(`API REST CORREINDO EN ${config.porthttps}`);
+        console.log(`API-REST CORRIENDO EN ${config.porthttps}`);
     });
   })
 
