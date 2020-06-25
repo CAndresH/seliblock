@@ -82,7 +82,58 @@ app.prepare().then(() => {
  
 
   })// end pos /datos
-
+  server.post('/badges/issue',(req,res)=>{
+    try{
+      const itemData = req.body;
+      console.log("datos de llegada al server Blockchain", itemData)
+    
+      if(Object.keys(itemData).length === 0) {
+        res.json("OBJETO VACIO...REENVIE DATOS");
+      }else if (Object.keys(itemData)[0]==='badgeName') {  //ONLY FOR VALIDATE
+        console.log("PROCEDE A VERIFICAR EL CERTIFICADO..");
+        fs.readFile('../json/db.json', 'utf8', (err, jsonString) => {
+          if (err) {
+              console.log("File read failed:", err)
+              return
+          }
+          jsonString=JSON.parse(jsonString)
+    
+          var bar=false
+          jsonString.certificates.map((cert)=>{
+            if(cert.contract===itemData.certificateHash){
+              console.log("si")
+              res.json({validation: "true"})
+              bar=true
+            }else{
+              console.log("no")
+            }
+          })
+          if(bar===false){
+            res.json({validation: "false"})}
+          })
+      }else if(Object.keys(itemData)[0]==='idStudent'){ //TO GENERATE THE CERT
+        console.log("PROCEDE A GENERAR CERTIFICADO..");
+       
+        app.render(req, res, '/badges/issueBadge',  {itemData} );
+        //CreateCert(itemData)
+        res.json("se genero el badge con exito en 201.159.223.92");
+    
+      }else{
+          console.log('Verifique la estructura de la peticion y vuelva a intentar..');
+      } 
+      fs.appendFile("./object.json", `\n${JSON.stringify(itemData)}`, err => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log("File has been GURADADO EN OBJECTS.JSON");
+      });
+      res.status(200).json(body)
+    }
+    catch{
+      res.status(400).send({ msg: 'error' })
+    }
+  })
 
 
   mongoose.connect(config.db, (err, res) => {
