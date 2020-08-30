@@ -79,7 +79,7 @@ app.prepare().then(() => {
       console.log("File has been GURADADO EN OBJECTS.JSON");
     });
   }); // end pos /datos
-  server.post("/badges/issue", (req, res) => {
+  server.post("/badges/issue", auth, (req, res) => {
     console.log("issue");
     try {
       const itemData = req.body;
@@ -87,7 +87,7 @@ app.prepare().then(() => {
 
       if (Object.keys(itemData).length === 0) {
         res.json("OBJETO VACIO...REENVIE DATOS");
-      } else if (Object.keys(itemData)[0] === "_id") {
+      } else if (Object.keys(itemData)[1] === "id") {
         //ONLY FOR VALIDATE
         console.log("PROCEDE A VERIFICAR la badge..");
         //   fs.readFile("../json/db.json", "utf8", (err, jsonString) => {
@@ -114,7 +114,7 @@ app.prepare().then(() => {
         // } else if (Object.keys(itemData)[0] === "idStudent") {
         //   //TO GENERATE THE CERT
         //   console.log("PROCEDE A GENERAR CERTIFICADO..");
-
+        //descomentar
         app.render(req, res, "/badges/issueBadge", { itemData });
         //CreateCert(itemData)
         res.json("se genero el badge con exito en 201.159.223.92");

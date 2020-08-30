@@ -21,16 +21,14 @@ class BadgeNew extends Component {
       console.log("undefined---No genera badge---");
       return {};
     } else {
+
       console.log("armando la badge");
       console.log(state);
       //arma el objeto con los datos del alumno
       var statefinal = {
-        _id: state._id,
-        _badgeName: state._badgeName,
-        _studentName: state._studentName, //nombres y apellidos//
-        _description: state.description,
-        _courseId: state._courseId,
-        _teacher: state._teacherId,//Corregir teacher id
+        _id: state.id,
+        _ownerIdentity: state.recipient.identity, //salted email//
+        _badgeClassId: state.badge.id,
         _date: state.issuedOn,
         loading: false,
         errorMessage: "",
@@ -41,15 +39,11 @@ class BadgeNew extends Component {
       };
       //   const fieldErrorMsg = fieldsAreValid(statefinal); para verificar la correctitud de datois
       //   if (!fieldErrorMsg) {
-      console.log("Pasa y genera la badge...");
-      let { _id, _badgeName, _studentName, _description, _courseId, _teacher } = statefinal;
-      const date = dateToEpoch(statefinal._date);
+      console.log("Pasa y genera la badge...",statefinal);
+      let { _id, _ownerIdentity, _badgeClassId } = statefinal;
+      const date = dateToEpoch(JSON.stringify(statefinal._date).substr(1,10));
+      console.log(JSON.stringify(statefinal._date).substr(1,10));
       console.log(_id)
-      console.log(_badgeName)
-      console.log(_studentName)
-      console.log(_description)
-      console.log(_courseId)
-      console.log(_teacher)
       console.log(date)
       // Submitting form to the blockchain
       try {
@@ -59,7 +53,7 @@ class BadgeNew extends Component {
           .then(console.log("Account unlocked!"));
         // (1) Create new Badge contract
         let transaction = await BadgeRegistry.methods
-          .createBadge(_id, _badgeName, _studentName, _description, _courseId, _teacher, date)
+          .createBadge(_id, _ownerIdentity, _badgeClassId, date)
           .send({ from: accounts[0] });
         console.log("after transaction line 58")
         console.log(transaction)
@@ -122,7 +116,7 @@ class BadgeNew extends Component {
     return (
       <Button id="MarriageBtn" icon labelPosition="left">
         <Icon name="book" />
-        Issue Certificate
+        Issue Badge
       </Button>
     );
   }
