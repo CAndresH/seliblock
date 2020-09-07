@@ -4,6 +4,7 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const compiledFactory = require('../build/BadgeRegistry.json');
 const fs = require('fs-extra')
+const config = require('../../config');
 
 const provider = new HDWalletProvider(
   // NEVER SHARE your keys!
@@ -12,7 +13,7 @@ const provider = new HDWalletProvider(
 );
 
 const web3 = new Web3();
-web3.setProvider(new web3.providers.HttpProvider('http://201.159.223.60:8081'));
+web3.setProvider(new web3.providers.HttpProvider(config.blockcahinAddress));
 
 
 const deploy = async () => {
