@@ -3,15 +3,16 @@
 const User = require('../models/user')
 const service = require('../services')
 const axios = require('axios');
-const config=require('../config')
+const config = require('../config')
 
 var encryptor = require('simple-encryptor')(config.key);
 
-function signUp (req, res) {
+function signUp(req, res) {
   //desencriptar datos de ususario\
   //console.log("Esto llega encriptado al servidor", req.body.data)
   var userData = encryptor.decrypt(req.body.data);
-  //console.log('obj decrypted:', userData);
+  console.log(req.body)
+  console.log('obj decrypted:', userData);
   const user = new User({
     email: userData.email, //req.body.data.email
     displayName: userData.displayName,
@@ -38,7 +39,7 @@ const signIn = (req, res) => {
       req.user = user
       return res.status(200).send({ msg: 'Te has logueado correctamente', token: service.createToken(user) })
     }
-  );
+    );
 
   }).select('_id email +password');
 }

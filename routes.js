@@ -6,4 +6,5 @@ routes
   .add('/admin/:address', '/admin/blockdtl')
   .add('/info/:address', '/info/cert')
   .add('/admin/transaction/:address', '/admin/transaction')
-module.exports = routes;
+  .add('/badges/issueBadge', '/badges/issueBadge')
+  module.exports = routes;
